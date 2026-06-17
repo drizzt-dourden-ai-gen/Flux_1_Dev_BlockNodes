@@ -1,0 +1,301 @@
+{
+  "2": {
+    "inputs": {
+      "S0_img": 0,
+      "S1_img": 0,
+      "S2_img": 0,
+      "S3_img": 0,
+      "S4_img": 0,
+      "S5_img": 0,
+      "model": [
+        "23",
+        0
+      ],
+      "clip": [
+        "23",
+        1
+      ]
+    },
+    "class_type": "FluxS0S5Block",
+    "_meta": {
+      "title": "Flux S‑Block Control (S0–S5)"
+    }
+  },
+  "3": {
+    "inputs": {
+      "S6_img": 0,
+      "S7_img": 0,
+      "S8_img": 0,
+      "S9_img": 0,
+      "S10_img": 0,
+      "S11_img": 0,
+      "S12_img": 0,
+      "model": [
+        "2",
+        0
+      ],
+      "clip": [
+        "2",
+        1
+      ]
+    },
+    "class_type": "FluxS6S12Block",
+    "_meta": {
+      "title": "Flux S‑Block Control (S6–S12)"
+    }
+  },
+  "4": {
+    "inputs": {
+      "S13_img": 0,
+      "S14_img": 0,
+      "S15_img": 0,
+      "S16_img": 0,
+      "S17_img": 0,
+      "S18_img": 0,
+      "S19_img": 0,
+      "S20_img": 0,
+      "model": [
+        "3",
+        0
+      ],
+      "clip": [
+        "3",
+        1
+      ]
+    },
+    "class_type": "FluxS13S20Block",
+    "_meta": {
+      "title": "Flux S‑Block Control (S13–S20)"
+    }
+  },
+  "5": {
+    "inputs": {
+      "S21_img": 0,
+      "S22_img": 0,
+      "S23_img": 0,
+      "S24_img": 0,
+      "S25_img": 0,
+      "S26_img": 0,
+      "S27_img": 0,
+      "S28_img": 0,
+      "model": [
+        "4",
+        0
+      ],
+      "clip": [
+        "4",
+        1
+      ]
+    },
+    "class_type": "FluxS21S28Block",
+    "_meta": {
+      "title": "Flux S‑Block Control (S21–S28)"
+    }
+  },
+  "6": {
+    "inputs": {
+      "S29_img": 0,
+      "S30_img": 0,
+      "S31_img": 0,
+      "S32_img": 0,
+      "S33_img": 0,
+      "S34_img": 0,
+      "S35_img": 0,
+      "S36_img": 0,
+      "S37_img": 0,
+      "model": [
+        "5",
+        0
+      ],
+      "clip": [
+        "5",
+        1
+      ]
+    },
+    "class_type": "FluxS29S37Block",
+    "_meta": {
+      "title": "Flux S‑Block Control (S29–S37)"
+    }
+  },
+  "7": {
+    "inputs": {
+      "clip_name1": "Flux1_Clips\\clip_l.safetensors",
+      "clip_name2": "Flux1_Clips\\t5xxl_fp16.safetensors",
+      "type": "flux",
+      "device": "default"
+    },
+    "class_type": "DualCLIPLoader",
+    "_meta": {
+      "title": "DualCLIPLoader"
+    }
+  },
+  "8": {
+    "inputs": {
+      "seed": 0,
+      "steps": 15,
+      "cfg": 2,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1,
+      "model": [
+        "6",
+        0
+      ],
+      "positive": [
+        "18",
+        0
+      ],
+      "negative": [
+        "15",
+        0
+      ],
+      "latent_image": [
+        "12",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "10": {
+    "inputs": {
+      "vae_name": "Flux1_vae\\ae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "11": {
+    "inputs": {
+      "unet_name": "Flux1_unet\\flux1-dev.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "Load Diffusion Model"
+    }
+  },
+  "12": {
+    "inputs": {
+      "width": 816,
+      "height": 1224,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "13": {
+    "inputs": {
+      "filename_prefix": "seed_/block_sweep",
+      "images": [
+        "16",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "15": {
+    "inputs": {
+      "text": "",
+      "clip": [
+        "7",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "16": {
+    "inputs": {
+      "samples": [
+        "8",
+        0
+      ],
+      "vae": [
+        "10",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "18": {
+    "inputs": {
+      "text": "",
+      "clip": [
+        "6",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "23": {
+    "inputs": {
+      "D0_txt": 0,
+      "D0_img": 0,
+      "D1_txt": 0,
+      "D1_img": 0,
+      "D2_txt": 0,
+      "D2_img": 0,
+      "D3_txt": 0,
+      "D3_img": 0,
+      "D4_txt": 0,
+      "D4_img": 0,
+      "D5_txt": 0,
+      "D5_img": 0,
+      "D6_txt": 0,
+      "D6_img": 0,
+      "D7_txt": 0,
+      "D7_img": 0,
+      "D8_txt": 0,
+      "D8_img": 0,
+      "D9_txt": 0,
+      "D9_img": 0,
+      "D10_txt": 0,
+      "D10_img": 0,
+      "D11_txt": 0,
+      "D11_img": 0,
+      "D12_txt": 0,
+      "D12_img": 0,
+      "D13_txt": 0,
+      "D13_img": 0,
+      "D14_txt": 0,
+      "D14_img": 0,
+      "D15_txt": 0,
+      "D15_img": 0,
+      "D16_txt": 0,
+      "D16_img": 0,
+      "D17_txt": 0,
+      "D17_img": 0,
+      "D18_txt": 0,
+      "D18_img": 0,
+      "model": [
+        "11",
+        0
+      ],
+      "clip": [
+        "7",
+        0
+      ]
+    },
+    "class_type": "FluxDBlockControl",
+    "_meta": {
+      "title": "Flux D‑Block Control (D0–D18)"
+    }
+  }
+}
